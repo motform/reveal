@@ -102,6 +102,7 @@
   (let [code (.getCode event)
         shortcut (.isShortcutDown event)
         alt (.isAltDown event)
+        control (.isControlDown event)
         with-anchor (not (.isShiftDown event))
         layout (:layout this)
         {:keys [cursor anchor]} layout]
@@ -206,7 +207,7 @@
       (cond-> this shortcut show-search)
 
       KeyCode/S
-      (cond-> this shortcut show-search)
+      (cond-> this control show-search)
 
       this)))
 
